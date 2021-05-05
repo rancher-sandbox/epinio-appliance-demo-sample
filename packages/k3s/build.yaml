@@ -1,0 +1,15 @@
+requires:
+- name: "cos"
+  category: "system"
+  version: ">=0"
+env:
+- INSTALL_K3S_SKIP_START="true"
+- INSTALL_K3S_EXEC="--data-dir /usr/local/rancher/k3s"
+- INSTALL_K3S_SKIP_ENABLE="true"
+prelude:
+- curl -sfL https://get.k3s.io > install.sh 
+steps:
+- INSTALL_K3S_VERSION="v${PACKAGE_VERSION%\+*}+k3s1" bash install.sh
+- systemctl enable k3s
+# Use the original one
+- rm -rf /usr/local/bin/kubectl
