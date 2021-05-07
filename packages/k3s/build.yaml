@@ -10,6 +10,6 @@ prelude:
 - curl -sfL https://get.k3s.io > install.sh 
 steps:
 - INSTALL_K3S_VERSION="v${PACKAGE_VERSION%\+*}+k3s1" bash install.sh
-- systemctl enable k3s
+#- systemctl enable k3s
 # Use the original one
 - rm -rf /usr/local/bin/kubectl

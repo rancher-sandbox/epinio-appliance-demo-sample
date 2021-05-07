@@ -14,16 +14,24 @@ stages:
        files:
         - path: /etc/issue
           content: |
-            .-----.
-            | .-. |
-            | |.| |
-            | `-' |
-            `-----'
+            @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            @%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            @%%%%%                %%%%%%%%%%%%%%%%%%
+            @%%%%%                %%%%%%%%%%%%%%%%%%
+            @%%%%%%%    %%%%    %%%%%%%%%%%%%%%%%%%%
+            @%%%%%%%    %%%%    %%%%%%%%%%%%%%%%%%%%
+            @%%%%%                             %%%%%
+            @%%%%%    %%%%%%%%%%%%%%%%%%%    ,%%%%%%
+            @%%%%%    %%%%%%%%%%%%%%%%%%    %%%%%%%%
+            @%%%%%%%%% %%%%%%%%% %%%%%%%%% %%%%%%%%%
+            @%%%%%                             %%%%%
+            @%%%%% %%%%%%%( (%%%%%%%/ (%%%%%%% %%%%%
+            @%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             Welcome to \S !
             IP address \4
-            Login with user: root, password: sampleos
-            Start the installer with "cos-installer <device>" to install it in the local system
+            Login with user: epinio, password: epinio
+            Start the installer with "sudo cos-installer <device>" to install it in the local system
           permissions: 0644
           owner: 0
           group: 0

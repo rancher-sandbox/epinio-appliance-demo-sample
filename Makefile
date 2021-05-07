@@ -44,17 +44,20 @@ clean:
 build:
 	$(LUET) build $(BUILD_ARGS) \
 	--destination $(ROOT_DIR)/build \
+	--values $(ROOT_DIR)/opensuse.yaml \
 	--from-repositories $(PACKAGES)
 
 create-repo:
 	$(LUET) create-repo \
 	--output $(ROOT_DIR)/build \
+	--tree $(ROOT_DIR)/packages \
 	--name "epinioOS" \
 	--from-repositories 
 
 publish-repo:
 	$(LUET) create-repo $(PUBLISH_ARGS) \
 	--output $(FINAL_REPO) \
+	--tree $(ROOT_DIR)/packages \
 	--name "epinioOS" \
 	--from-repositories \
 	--push-images \

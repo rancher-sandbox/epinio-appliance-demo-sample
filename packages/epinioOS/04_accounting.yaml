@@ -9,9 +9,22 @@ name: "Default user"
 stages:
    initramfs:
      - name: "Setup users"
-       ensure_entities:
-       - path: /etc/shadow
-         entity: |
-            kind: "shadow"
-            username: "root"
-            password: "$1$zbqaUEOw$iHflRXL1l1Hs9W1DMJWOO0"
+       users: 
+          epinio: 
+            passwd: "epinio"
+            homedir: "/home/epinio"
+     - name: "groups"
+       ensure_entities: 
+       - entity: |
+                 kind: "group"
+                 group_name: "wheel"
+                 password: "x"
+                 gid: 1020
+                 users: "epinio"
+       files: 
+       - path: "/etc/sudoers.d/wheel"
+         owner: 0
+         group: 0
+         permission: 600   
+         content: |
+                   %wheel ALL=(ALL) NOPASSWD: ALL

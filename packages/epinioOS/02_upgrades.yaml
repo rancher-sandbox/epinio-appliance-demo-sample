@@ -48,3 +48,6 @@ stages:
        environment:
          UPGRADE_IMAGE: system/epinioOS
          CHANNEL_UPGRADES: "true"
+        #  UPGRADE_IMAGE: dockerimageorg/name:tag
+        #  CHANNEL_UPGRADES: "false"
+        #  NO_VERIFY="set"

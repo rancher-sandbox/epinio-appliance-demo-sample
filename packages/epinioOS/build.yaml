@@ -6,7 +6,7 @@ requires:
   name: "epinio"
   version: ">=0"
 steps:
-
+- zypper in -y sudo shadow
 - sed -i 's/:VERSION:/{{.Values.version}}/g' setup.yaml
 - sed -i 's/:PRETTY_NAME:/{{.Values.brand_name}} v{{.Values.version}}/g' setup.yaml
 - cp -fv 02_upgrades.yaml /system/oem/02_upgrades.yaml
