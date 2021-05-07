@@ -1,9 +1,10 @@
 stages:
    network:
-     - name: "Start k3s"
+     - name: "Start k3s and iscsid"
        systemctl: 
          start:
          - k3s
+         - iscsid
      - name: "Setup Longhorn"
        commands:
        - |
@@ -11,10 +12,6 @@ stages:
           sed -e 's/#- name: KUBELET_ROOT_DIR/- name: KUBELET_ROOT_DIR/g' -e 's$#  value: /var/lib/rancher/k3s/agent/kubelet$  value: /var/lib/kubelet$g'  | \
           sed -e 's|default-data-path:|default-data-path: /usr/local/rancher/longhorn|g' | \
           KUBECONFIG=/etc/rancher/k3s/k3s.yaml kubectl apply -f -
-     - name: "Start scsid and k3s"
-       systemctl: 
-         start:
-         - k3s
      - name: "Setup epinio"
        commands:
        - |

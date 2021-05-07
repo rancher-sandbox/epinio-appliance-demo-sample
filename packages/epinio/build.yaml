@@ -19,8 +19,9 @@ prelude:
 
 - go get github.com/rakyll/statik
 - |
+   PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
    git clone https://github.com/epinio/epinio.git epinio && \
-   cd epinio && git checkout v{{.Values.version}} -b build
+   cd epinio && git checkout v$PACKAGE_VERSION -b build
 - cp epinio.yaml /system/oem/
 steps:
 - |
