@@ -44,7 +44,7 @@ clean:
 build:
 	$(LUET) build $(BUILD_ARGS) \
 	--destination $(ROOT_DIR)/build \
-	--values $(ROOT_DIR)/opensuse.yaml \
+	--values $(ROOT_DIR)/values.yaml \
 	--from-repositories $(PACKAGES)
 
 create-repo:
