@@ -34,6 +34,7 @@ stages:
                     priority: 1
                     verify: false
                     urls:
+                  # This is the final image used to pull upgrades
                     - "raccos/epinio-appliance-demo-test"
          permissions: 0600
          owner: 0
@@ -46,6 +47,7 @@ stages:
          group: 0
        environment_file: /etc/cos-upgrade-image
        environment:
+        # This is the package name corresponding to our OS
          UPGRADE_IMAGE: system/epinioOS
          CHANNEL_UPGRADES: "true"
         #  UPGRADE_IMAGE: dockerimageorg/name:tag
