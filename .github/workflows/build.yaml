@@ -84,7 +84,8 @@ jobs:
       FLAVOR: ${{ matrix.flavor }}
     steps:
     - uses: actions/checkout@v2
-    
+      with:
+        submodules: recursive
     - name: Download result for build
       uses: actions/download-artifact@v2
       with:

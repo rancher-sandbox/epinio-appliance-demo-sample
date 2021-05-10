@@ -1,6 +1,0 @@
-repositories:
-  - name: cOS
-    enable: true
-    urls:
-      - raccos/releases-opensuse
-    type: docker
