@@ -51,11 +51,13 @@ _Reproducibility_: The `.luet.yaml` file in the top level is used to fetch the `
 Using a git submodule  allows more fine-grained control on which version of the `cos-toolkit` tree we want to rely on - Also guarantees that at a given point in time at an `EpinioOS` checkout corresponds a given `cos-toolkit` version by looking at the repository history.
 
 ```bash
+# Add a cos-toolkit submodule in your derivative to point at invidual releases
 git submodule add https://github.com/rancher-sandbox/cOS-toolkit packages/cos-toolkit
 ```
 
-## Build locally
+_Example_: See [this commit](https://github.com/rancher-sandbox/epinio-appliance-demo-sample/commit/2485332642ef862ae4d5db1239675b77ce7b7232) as an example on how to use submodules from a derivative using `.luet.yaml` files in the top-level.
 
+## Build locally
 
 Requires `Docker` installed locally and at least 10G of disk space free on `/var/lib/docker`. First build can take up long time depending on your internet connectivity.
 
