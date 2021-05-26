@@ -46,7 +46,7 @@ build:
 	--destination $(ROOT_DIR)/build \
 	--values $(ROOT_DIR)/packages/cos-toolkit/values/opensuse.yaml \
 	--values $(ROOT_DIR)/values.yaml \
-	--pull-repository raccos/releases-opensuse $(PACKAGES)
+	--pull-repository quay.io/costoolkit/releases-opensuse $(PACKAGES)
 
 create-repo:
 	$(LUET) create-repo \

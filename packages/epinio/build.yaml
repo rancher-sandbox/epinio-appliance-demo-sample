@@ -2,31 +2,22 @@ requires:
 - name: "golang"
   category: "build"
   version: ">=0"
-- name: "kubectl"
-  category: "app"
-  version: ">=0"
-- name: "helm"
-  category: "app"
-  version: ">=0"
-- name: "k3s"
-  category: "app"
-  version: ">=0"
 env:
 - GOPATH=/luetbuild/go
-- PATH=$PATH:$GOPATH/bin
+- PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 - GO111MODULE=on
+- CGO_ENABLED=0
+- LDFLAGS="-s -w"
 prelude:
 
 - go get github.com/rakyll/statik
+- zypper in -y git
 - |
    PACKAGE_VERSION=${PACKAGE_VERSION%\+*} && \
    git clone https://github.com/epinio/epinio.git epinio && \
    cd epinio && git checkout v$PACKAGE_VERSION -b build
-- cp epinio.yaml /system/oem/
 steps:
 - |
    cd epinio && make build && \
    cp -rf dist/epinio-linux-amd64 /usr/bin/epinio && \
    chmod +x /usr/bin/epinio
-
-
