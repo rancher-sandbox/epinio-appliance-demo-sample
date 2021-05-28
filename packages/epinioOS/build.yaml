@@ -5,7 +5,9 @@ requires:
 - name: "k3s"
   category: "app"
   version: ">=0"
-
+- name: "policy"
+  category: "selinux"
+  version: ">=0"
 copy:
 - package:
     category: "app"
