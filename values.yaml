@@ -1,3 +1,10 @@
 additional_packages: >-
     sudo
     shadow
+
+upgrade_repository: "raccos/epinio-appliance-demo-test"
+upgrade_package: "system/epinioOS"
+channel_upgrades: true
+verify_upgrades: false
+repository_name: "EpinioOS"
+repository_description: "EpinioOS"

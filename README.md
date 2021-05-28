@@ -36,7 +36,7 @@ To tweak where all the generated images should go, set `REPO_CACHE` and `FINAL_R
 - `REPO_CACHE` is the image reference used to push all the cache images used to guarantee a reproducible build of your tree given a git checkout (which successfully went through CI).
 - `FINAL_REPO` is the destination of the final images that are consumed by the derivatives during upgrades
 
-To allow your derivative to point to the images you have built during upgrades, edit [packages/epinioOS/02_upgrades.yaml](https://github.com/rancher-sandbox/epinio-appliance-demo-sample/blob/master/packages/epinioOS/02_upgrades.yaml) accordingly:
+To allow your derivative to point to the images you have built during upgrades, you can either set them in the [values file](https://github.com/rancher-sandbox/epinio-appliance-demo-sample/blob/master/values.yaml) or manually change [packages/epinioOS/02_upgrades.yaml](https://github.com/rancher-sandbox/epinio-appliance-demo-sample/blob/master/packages/epinioOS/02_upgrades.yaml) accordingly:
 
 - [Set the FINAL_IMAGE](https://github.com/rancher-sandbox/epinio-appliance-demo-sample/blob/23fd08bda6e26cc9c6018e24b3089a7aa5d44ad5/packages/epinioOS/02_upgrades.yaml#L37)
 - [Set the package name](https://github.com/rancher-sandbox/epinio-appliance-demo-sample/blob/23fd08bda6e26cc9c6018e24b3089a7aa5d44ad5/packages/epinioOS/02_upgrades.yaml#L49) accordingly to the package that you want to upgrade when running `cos-upgrade` ( in our case, [system/epinioOS](https://github.com/rancher-sandbox/epinio-appliance-demo-sample/blob/master/packages/epinioOS/definition.yaml) )
