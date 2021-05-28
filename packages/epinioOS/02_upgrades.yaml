@@ -26,16 +26,15 @@ stages:
                      debug: false
                      spinner_charset: 9
                   repositories:
-                  - name: "epinioOS"
-                    description: "epinioOS"
+                  - name: ":REPOSITORY_NAME:"
+                    description: ":REPOSITORY_DESCRIPTION:"
                     type: "docker"
                     enable: true
                     cached: true
                     priority: 1
-                    verify: false
                     urls:
                   # This is the final image used to pull upgrades
-                    - "raccos/epinio-appliance-demo-test"
+                    - ":UPGRADE_REPOSITORY:"
          permissions: 0600
          owner: 0
          group: 0
@@ -48,8 +47,9 @@ stages:
        environment_file: /etc/cos-upgrade-image
        environment:
         # This is the package name corresponding to our OS
-         UPGRADE_IMAGE: system/epinioOS
-         CHANNEL_UPGRADES: "true"
+         UPGRADE_IMAGE: ":UPGRADE_PACKAGE:"
+         CHANNEL_UPGRADES: ":CHANNEL_UPGRADES:"
+         VERIFY: ":VERIFY_UPGRADES:"
         #  UPGRADE_IMAGE: dockerimageorg/name:tag
         #  CHANNEL_UPGRADES: "false"
         #  NO_VERIFY="set"

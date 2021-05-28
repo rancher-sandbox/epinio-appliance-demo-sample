@@ -28,8 +28,25 @@ copy:
 
 steps:
 - zypper in -y {{.Values.additional_packages}}
-- sed -i 's/:VERSION:/{{.Values.version}}/g' setup.yaml
-- sed -i 's/:PRETTY_NAME:/{{.Values.brand_name}} v{{.Values.version}}/g' setup.yaml
+
+# See https://github.com/mudler/luet/issues/197
+- sed -i 's|:VERSION:|{{.Values.version}}|g' setup.yaml
+- sed -i 's|:PRETTY_NAME:|{{.Values.brand_name}} v{{.Values.version}}|g' setup.yaml
+- sed -i 's|:UPGRADE_REPOSITORY:|{{.Values.upgrade_repository}}|g' 02_upgrades.yaml
+- sed -i 's|:UPGRADE_PACKAGE:|{{.Values.upgrade_package}}|g' 02_upgrades.yaml
+- sed -i 's|:REPOSITORY_NAME:|{{.Values.repository_name}}|g' 02_upgrades.yaml
+- sed -i 's|:REPOSITORY_DESCRIPTION:|{{.Values.repository_description}}|g' 02_upgrades.yaml
+{{ if .Values.channel_upgrades }}
+- sed -i 's|:CHANNEL_UPGRADES:|true|g' 02_upgrades.yaml
+{{ else }}
+- sed -i 's|:CHANNEL_UPGRADES:|false|g' 02_upgrades.yaml
+{{ end }}
+{{ if .Values.verify_upgrades }}
+- sed -i 's|:VERIFY_UPGRADES:|true|g' 02_upgrades.yaml
+{{ else }}
+- sed -i 's|:VERIFY_UPGRADES:|false|g' 02_upgrades.yaml
+{{ end }}
+
 - cp -fv 02_upgrades.yaml /system/oem/02_upgrades.yaml
 - cp -fv 03_branding.yaml /system/oem/03_branding.yaml
 - cp -fv 04_accounting.yaml /system/oem/04_accounting.yaml
